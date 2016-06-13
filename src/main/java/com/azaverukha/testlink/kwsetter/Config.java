@@ -17,6 +17,26 @@ public class Config {
     private String testLinkLogin = "";
     private String testLinkPassword = "";
     private Map<String, String> testLinkProjects = new HashMap<>();
+    private String browserType = "";
+
+    private String chromeDriver = "";
+    public String getChromeDriver() {
+        return chromeDriver;
+    }
+
+    public void setChromeDriver(String chromeDriver) {
+        this.chromeDriver = chromeDriver;
+    }
+
+
+    public String getBrowserType() {
+        return browserType;
+    }
+
+    public void setBrowserType(String browserType) {
+        this.browserType = browserType;
+    }
+
     public Map<String, String> getTestLinkProjects() {
         return testLinkProjects;
     }
@@ -64,6 +84,8 @@ public class Config {
             String[] projectMapArr = projectMap.split(":");
             testLinkProjects.put(projectMapArr[0].toLowerCase(), projectMapArr[1]);
         }
+        browserType = properties.getProperty("selenium.broserType", "firefox");
+        chromeDriver = properties.getProperty("selenium.chromeDriver", "");
 
     }
 

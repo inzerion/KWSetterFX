@@ -15,6 +15,7 @@ import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
@@ -191,11 +192,24 @@ public class Main extends Application {
         return lastRow;
     }
 
+    private WebDriver createWebDriver(){
+        WebDriver webDriver = null;
+        switch (Config.getInstance().getBrowserType()){
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", Config.getInstance().getChromeDriver());
+                webDriver = new ChromeDriver();
+                break;
+             default:
+                 webDriver = new FirefoxDriver();
+        }
+        return webDriver;
+    }
+
 
 
     private void updateKeywords(){
 
-        webDriver = new FirefoxDriver();
+        webDriver = createWebDriver();
         try {
 
             webDriver.get(Config.getInstance().getTestlinkUrl());
