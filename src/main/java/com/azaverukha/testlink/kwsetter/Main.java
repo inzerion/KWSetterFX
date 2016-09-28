@@ -138,7 +138,7 @@ public class Main extends Application {
     private void selectFile(Stage primaryStage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Test IDs XLS file");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("MS Office files (*.xls)", "*.xls");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("MS Office files (*.xls, *.xlsx)", "*.xls", "*.xlsx");
         fileChooser.getExtensionFilters().add(extFilter);
         file = fileChooser.showOpenDialog(primaryStage);
         if(file != null){
